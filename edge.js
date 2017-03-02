@@ -388,7 +388,7 @@ function updateTotals(bets) {
     });
 
     totalEV = totalEV.toFixed(2);
-    const totalWinPercentage = ((totalWins / totalBets) * 100).toFixed(2);
+    const totalWinPercentage = ((totalWins / (totalBets - totalTiedCanceled)) * 100).toFixed(2);
     const avgEV = (totalEV / (totalWins + totalLosses)).toFixed(2);
 
     const totalRow = document.createElement('tr');
