@@ -1,24 +1,4 @@
-let straights = 0;
-let straightWins = 0
-let straightWinsBTC = 0
-let straightLosses = 0
-let straightLossesBTC = 0
-let straightSpecials = 0;
-let straightsNet = 0;
-
-let parlays = 0;
-let parlayWins = 0;
-let parlayWinsBTC = 0;
-let parlayLosses = 0;
-let parlayLossesBTC = 0;
-let parlaySpecials = 0;
-let parlaysNet = 0;
-
-let totalSlips = 0;
-
 const bets = [];
-
-
 
 tables.forEach((table, idx) => {
     if (idx !== 0 && idx % 2 === 0) {
