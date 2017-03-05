@@ -18,6 +18,8 @@ let totalSlips = 0;
 
 const bets = [];
 
+
+
 tables.forEach((table, idx) => {
     if (idx !== 0 && idx % 2 === 0) {
         totalSlips += 1;
