@@ -29,32 +29,32 @@ function wagerTable(tables) {
 
     tables.forEach((table) => {
         if (idx !== 0 && idx % 2 === 0) {
-            totalSlips ++;
+            totalSlips++;
 
             const linkRow = table.children[0].children[0];
             const slipBets = Array.from(tables[idx - 1].children[0].children);
 
             if (linkRow.children.length > 2) {
-                parlays ++;
+                parlays++;
 
                 const reward = parseFloat(linkRow.children[4].children[0].innerHTML.split(' ')[0]);
                 const risk = parseFloat(linkRow.children[3].children[0].innerHTML.split(' ')[0]);
 
                 if (evalParlay(slipBets)) {
                     if (reward > 0) {
-                        parlayWins ++;
+                        parlayWins++;
                         parlaysNet += reward;
                         parlayWinsBTC += reward;
                     } else {
-                        parlayTies ++;
+                        parlayTies++;
                     }
                 } else {
-                    parlayLosses ++;
+                    parlayLosses++;
                     parlaysNet -= risk;
                     parlayLossesBTC -= risk;
                 }
             } else {
-                straights ++;
+                straights++;
 
                 const result = slipBets[0].children[5].innerHTML;
 
@@ -62,15 +62,15 @@ function wagerTable(tables) {
                 const risk = parseFloat(slipBets[0].children[3].innerHTML);
 
                 if (result === "win") {
-                    straightWins ++;
+                    straightWins++;
                     straightsNet += reward;
                     straightWinsBTC += reward;
                 } else if (result === "lose") {
-                    straightLosses ++;
+                    straightLosses++;
                     straightsNet -= risk;
                     straightLossesBTC -= risk;
                 } else {
-                    straightTies ++;
+                    straightTies++;
                 }
             }
         }
