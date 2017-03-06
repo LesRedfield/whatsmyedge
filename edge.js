@@ -1,13 +1,82 @@
+const bets = fetchBets(caseyTables, 'Casey');
+
+const users = ['Jared', 'Casey'];
+
+const sports = [];
+
+bets.forEach((bet) => {
+    if (!sports.includes(bet.sport)) {
+        sports.push(bet.sport);
+    }
+});
+
+function filterBets(bets, user, sport, team, opponent) {
+    if (user) {
+        bets = bets.filter((bet) => {
+            return bet.user === user;
+        });
+    }
+
+    if (!sport && !team && !opponent) {
+        return bets;
+    } else if (sport && !team && !opponent) {
+        return bets.filter((bet) => {
+            return bet.sport === sport;
+        });
+    } else if (sport && !team) {
+        return bets.filter((bet) => {
+            return bet.opponent === opponent;
+        });
+    } else if (sport) {
+        return bets.filter((bet) => {
+            return bet.team === team;
+        });
+    }
+}
+
+const totalsContainer = document.createElement('div');
+body.appendChild(totalsContainer);
+
+function updateTotals(bets) {
+    totalsContainer.innerHTML = '';
+    const users = [];
+
+    bets.forEach((bet) => {
+        if (!users.includes(bet.user)) {
+            users.push(bet.user);
+        }
+    });
+
+    users.forEach((user) => {
+        totalsContainer.appendChild(totalsList(filterBets(bets, user)));
+    });
+}
 
 
-const sports = [
-    "Basketball",
-    "Football",
-    "Soccer",
-    "Tennis",
-    "Specials",
-    "Props"
-];
+function dispBets(bets) {
+    bets.forEach((bet) => {
+        const betRow = document.createElement('tr');
+        betRow.innerHTML = `
+            <td>${ bet.user }</td>
+            <td>${ bet.sport }</td>
+            <td>${ bet.league }</td>
+            <td>${ bet.team }</td>
+            <td>${ bet.opp }</td>
+            <td>${ bet.type }</td>
+            <td>${ bet.line }</td>
+            <td>${ bet.odds }</td>
+            <td>${ bet.risk }</td>
+            <td>${ bet.reward }</td>
+            <td>${ bet.result }</td>
+        `;
+
+        betRow.style.backgroundColor = bet.result === "win" ? "rgba(0, 255, 0, 0.7)" :
+                                       bet.result === "lose" ? "rgba(255, 0, 0, 0.7)" : "yellow";
+        betsListBody.appendChild(betRow);
+    });
+
+    updateTotals(bets);
+}
 
 const sportsDropdown = document.createElement('select');
 sportsDropdown.innerHTML = `<option value="All">All Sports</option>`;
@@ -24,6 +93,7 @@ const betsListBody = document.createElement('tbody');
 const betsListHeader = document.createElement('tr');
 betsListHeader.innerHTML = `
     <tr>
+        <td id="user">User</td>
         <td id="sport-header"></td>
         <td id="league-header"></td>
         <td id="team-header"></td>
@@ -136,7 +206,6 @@ function handleLeagueChange(e) {
                    bet.sport === sportsDropdown.value;
         }
     });
-    console.log(sportsDropdown.value);
 
     dispBets(displayBets);
     dispTeamsFromLeague(e.target.value);
@@ -179,7 +248,6 @@ function handleTeamChange(e) {
             bet.team.split(' ').join('') === e.target.value;
         }
     });
-    console.log(sportsDropdown.value);
 
     dispBets(displayBets);
 }
@@ -188,29 +256,7 @@ sportsDropdown.addEventListener('change', handleSportChange);
 leaguesDropdown.addEventListener('change', handleLeagueChange);
 teamsDropdown.addEventListener('change', handleTeamChange);
 
-function dispBets(bets) {
-    bets.forEach((bet) => {
-        const betRow = document.createElement('tr');
-        betRow.innerHTML = `
-            <td>${ bet.sport }</td>
-            <td>${ bet.league }</td>
-            <td>${ bet.team }</td>
-            <td>${ bet.opp }</td>
-            <td>${ bet.type }</td>
-            <td>${ bet.line }</td>
-            <td>${ bet.odds }</td>
-            <td>${ bet.risk }</td>
-            <td>${ bet.reward }</td>
-            <td>${ bet.result }</td>
-        `;
 
-        betRow.style.backgroundColor = bet.result === "win" ? "rgba(0, 255, 0, 0.7)" :
-                                       bet.result === "lose" ? "rgba(255, 0, 0, 0.7)" : "yellow";
-        betsListBody.appendChild(betRow);
-    });
-
-    updateTotals(bets);
-}
 
 
 

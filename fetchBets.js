@@ -1,4 +1,4 @@
-function fetchBets(tables) {
+function fetchBets(tables, user) {
     const bets = [];
 
     tables.forEach((table, idx) => {
@@ -23,6 +23,7 @@ function fetchBets(tables) {
                 const team = wager.join(' ');
                 const opp = team === team1 ? team2 : team1;
                 return {
+                    user,
                     team,
                     opp,
                     type,

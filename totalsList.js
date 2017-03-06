@@ -14,6 +14,8 @@ function totalsList(bets) {
         </tr>
     `;
     totalsListBody.appendChild(totalsListHeader);
+    totalsList.appendChild(totalsListBody);
+    body.appendChild(totalsList);
 
     const totalBets = bets.length;
     let totalWins = 0;
@@ -72,9 +74,6 @@ function totalsList(bets) {
                                         totalEV < 0 ? "rgba(255, 0, 0, 0.7)" : "yellow";
     avgEVCell.style.backgroundColor = avgEV > 0 ? "rgba(0, 255, 0, 0.7)" :
                                       avgEV < 0 ? "rgba(255, 0, 0, 0.7)" : "yellow";
-
-
-    totalsList.appendChild(totalsListBody);
 
     return totalsList;
 }

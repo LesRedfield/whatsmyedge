@@ -18,4 +18,4 @@ const div = document.createElement( 'div' );
 
 div.innerHTML = html;
 
-const tables = Array.from(div.getElementsByTagName( 'table' ));
+const caseyTables = Array.from(div.getElementsByTagName( 'table' ));
