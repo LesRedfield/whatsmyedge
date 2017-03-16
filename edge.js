@@ -52,7 +52,6 @@ function updateTotals(bets) {
     });
 }
 
-
 function dispBets(bets) {
     bets.forEach((bet) => {
         const betRow = document.createElement('tr');
@@ -261,3 +260,5 @@ teamsDropdown.addEventListener('change', handleTeamChange);
 
 
 dispBets(displayBets);
+
+console.log(wagerTable(caseyTables));

@@ -27,7 +27,7 @@ function wagerTable(tables) {
         parlaysNet =
         totalSlips = 0;
 
-    tables.forEach((table) => {
+    tables.forEach((table, idx) => {
         if (idx !== 0 && idx % 2 === 0) {
             totalSlips++;
 
