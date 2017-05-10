@@ -1,6 +1,4 @@
-const bets = fetchBets(caseyTables, 'Casey');
-
-const users = ['Jared', 'Casey'];
+const bets = fetchBets(playerTables, name);
 
 const sports = [];
 
@@ -255,10 +253,6 @@ sportsDropdown.addEventListener('change', handleSportChange);
 leaguesDropdown.addEventListener('change', handleLeagueChange);
 teamsDropdown.addEventListener('change', handleTeamChange);
 
-
-
-
-
 dispBets(displayBets);
 
-console.log(wagerTable(caseyTables));
+console.log(wagerTable(playerTables));

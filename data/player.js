@@ -19,4 +19,6 @@ const div = document.createElement( 'div' );
 
 div.innerHTML = html;
 
-const caseyTables = Array.from(div.getElementsByTagName( 'table' ));
+const playerTables = Array.from(div.getElementsByTagName( 'table' ));
+
+const name = 'Casey';
