@@ -76,21 +76,54 @@ function wagerTable(tables) {
         }
     });
 
-    return {
-        straights,
-        straightWins,
-        straightWinsBTC,
-        straightLosses,
-        straightLossesBTC,
-        straightTies,
-        straightsNet,
-        parlays,
-        parlayWins,
-        parlayWinsBTC,
-        parlayLosses,
-        parlayLossesBTC,
-        parlayTies,
-        parlaysNet,
-        totalSlips
-    }
+    // return {
+    //     straights,
+    //     straightWins,
+    //     straightWinsBTC,
+    //     straightLosses,
+    //     straightLossesBTC,
+    //     straightTies,
+    //     straightsNet,
+    //     parlays,
+    //     parlayWins,
+    //     parlayWinsBTC,
+    //     parlayLosses,
+    //     parlayLossesBTC,
+    //     parlayTies,
+    //     parlaysNet,
+    //     totalSlips
+    // }
+
+    const wagersList = document.createElement('table');
+    const wagersListBody = document.createElement('tbody');
+    const wagersListHeader = document.createElement('tr');
+    wagersListHeader.innerHTML = `
+        <tr>
+            <td>Straights</td>
+            <td>Wins</td>
+            <td>Losses</td>
+            <td>Net</td>
+            <td>Parlays</td>
+            <td>Wins</td>
+            <td>Losses</td>
+            <td>Net</td>
+        </tr>
+    `;
+    wagersListBody.appendChild(wagersListHeader);
+    wagersList.appendChild(wagersListBody);
+    body.appendChild(wagersList);
+
+    const wagerRow = document.createElement('tr');
+    wagerRow.innerHTML = `
+        <td id="straights">${ straights }</td>
+        <td id="s-wins">${ straightWinsBTC }</td>
+        <td id="s-losses">${ straightLossesBTC }</td>
+        <td id="s-net">${ straightsNet }</td>
+        <td id="parlays">${ parlays }</td>
+        <td id="p-wins">${ parlayWins }</td>
+        <td id="p-losses">${ parlayLosses }</td>
+        <td id="p-net">${ parlaysNet }</td>
+    `;
+
+    wagersListBody.appendChild(wagerRow);
 }

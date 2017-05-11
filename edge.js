@@ -255,4 +255,4 @@ teamsDropdown.addEventListener('change', handleTeamChange);
 
 dispBets(displayBets);
 
-console.log(wagerTable(playerTables));
+wagerTable(playerTables);
