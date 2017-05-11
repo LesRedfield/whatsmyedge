@@ -120,8 +120,8 @@ function wagerTable(tables) {
         <td id="s-losses">${ straightLossesBTC }</td>
         <td id="s-net">${ straightsNet }</td>
         <td id="parlays">${ parlays }</td>
-        <td id="p-wins">${ parlayWins }</td>
-        <td id="p-losses">${ parlayLosses }</td>
+        <td id="p-wins">${ parlayWinsBTC }</td>
+        <td id="p-losses">${ parlayLossesBTC }</td>
         <td id="p-net">${ parlaysNet }</td>
     `;
 
