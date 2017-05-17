@@ -100,13 +100,13 @@ function wagerTable(tables) {
     wagersListHeader.innerHTML = `
         <tr>
             <td>Straights</td>
-            <td>Wins</td>
-            <td>Losses</td>
-            <td>Net</td>
+            <td>Wins (BTC)</td>
+            <td>Losses (BTC)</td>
+            <td>Net (BTC)</td>
             <td>Parlays</td>
-            <td>Wins</td>
-            <td>Losses</td>
-            <td>Net</td>
+            <td>Wins (BTC)</td>
+            <td>Losses (BTC)</td>
+            <td>Net (BTC)</td>
         </tr>
     `;
     wagersListBody.appendChild(wagersListHeader);
@@ -126,4 +126,21 @@ function wagerTable(tables) {
     `;
 
     wagersListBody.appendChild(wagerRow);
+
+    const sWinsCell = document.getElementById('s-wins');
+    const sLossesCell = document.getElementById('s-losses');
+    const sNetCell = document.getElementById('s-net');
+    const pWinsCell = document.getElementById('p-wins');
+    const pLossesCell = document.getElementById('p-losses');
+    const pNetCell = document.getElementById('p-net');
+
+    sWinsCell.style.backgroundColor = "rgba(0, 255, 0, 0.7)";
+    sLossesCell.style.backgroundColor = "rgba(255, 0, 0, 0.7)";
+    pWinsCell.style.backgroundColor = "rgba(0, 255, 0, 0.7)";
+    pLossesCell.style.backgroundColor = "rgba(255, 0, 0, 0.7)";
+
+    sNetCell.style.backgroundColor = straightsNet > 0 ? "rgba(0, 255, 0, 0.7)" :
+                                        straightsNet < 0 ? "rgba(255, 0, 0, 0.7)" : "yellow";
+    pNetCell.style.backgroundColor = parlaysNet > 0 ? "rgba(0, 255, 0, 0.7)" :
+                                      parlaysNet < 0 ? "rgba(255, 0, 0, 0.7)" : "yellow";
 }
