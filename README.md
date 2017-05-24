@@ -1,8 +1,8 @@
 # whatsmyedge
 
-[https://github.com/LesRedfield/whatsmyedge.git][edge]
+[http://www.lesredfield.com/whatsmyedge/][edge]
 
-[edge]: lesredfield.com/whatsmyedge
+[edge]: http://www.lesredfield.com/whatsmyedge/
 
 ## Features
 
