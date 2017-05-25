@@ -121,30 +121,6 @@ sports.forEach((sport) => {
 
 let displayBets = bets;
 
-function handleSportChange(e) {
-    betsListBody.innerHTML = "";
-    betsListBody.appendChild(betsListHeader);
-
-    teamsDropdown.innerHTML = `<option value="All">All Teams</option>`;
-    leaguesDropdown.innerHTML = `<option value="All">All Leagues</option>`;
-
-    if (e.target.value === "Props") {
-        displayBets = bets.filter((bet) => {
-            return bet.league.includes('Props');
-        });
-    } else if (e.target.value === "All") {
-        displayBets = bets;
-    } else {
-        displayBets = bets.filter((bet) => {
-            return bet.sport === e.target.value;
-        });
-    }
-
-    dispBets(displayBets);
-    dispLeaguesFromSport(e.target.value);
-    dispTeams(e.target.value, 'sport');
-}
-
 function dispLeaguesFromSport(sport) {
     const leagues = [];
 
@@ -182,6 +158,30 @@ function dispTeams(val, type) {
     teams.forEach((team) => {
         teamsDropdown.innerHTML += `<option value=${team.split(' ').join('')}>${team}</option>`;
     });
+}
+
+function handleSportChange(e) {
+    betsListBody.innerHTML = "";
+    betsListBody.appendChild(betsListHeader);
+
+    teamsDropdown.innerHTML = `<option value="All">All Teams</option>`;
+    leaguesDropdown.innerHTML = `<option value="All">All Leagues</option>`;
+
+    if (e.target.value === "Props") {
+        displayBets = bets.filter((bet) => {
+            return bet.league.includes('Props');
+        });
+    } else if (e.target.value === "All") {
+        displayBets = bets;
+    } else {
+        displayBets = bets.filter((bet) => {
+            return bet.sport === e.target.value;
+        });
+    }
+
+    dispBets(displayBets);
+    dispLeaguesFromSport(e.target.value);
+    dispTeams(e.target.value, 'sport');
 }
 
 function handleLeagueChange(e) {
