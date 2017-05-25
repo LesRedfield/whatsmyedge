@@ -227,6 +227,7 @@ function dispTeamsFromLeague(league) {
 }
 
 function handleTeamChange(e) {
+
     betsListBody.innerHTML = "";
     betsListBody.appendChild(betsListHeader);
 
@@ -235,7 +236,7 @@ function handleTeamChange(e) {
                return bet.sport === sportsDropdown.value;
         } else if (e.target.value === "All") {
             return bet.sport === sportsDropdown.value &&
-                   bet.league.split(' ').join('') === sportsDropdown.value;
+                   bet.league.split(' ').join('') === leaguesDropdown.value;
         } else if (leaguesDropdown.value !== "All") {
             return bet.sport === sportsDropdown.value &&
                    bet.league.split(' ').join('') === leaguesDropdown.value &&
