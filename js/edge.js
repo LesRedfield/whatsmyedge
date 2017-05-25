@@ -142,7 +142,7 @@ function handleSportChange(e) {
 
     dispBets(displayBets);
     dispLeaguesFromSport(e.target.value);
-    dispTeamsFromSport(e.target.value);
+    dispTeams(e.target.value, 'sport');
 }
 
 function dispLeaguesFromSport(sport) {
@@ -164,13 +164,13 @@ function dispLeaguesFromSport(sport) {
     });
 }
 
-function dispTeamsFromSport(sport) {
+function dispTeams(val, type) {
     const teams = [];
 
     displayBets.forEach((bet) => {
-        if (sport === 'Specials' && !teams.includes(bet.league)) {
+        if (type === 'sport' && val === 'Specials' && !teams.includes(bet.league)) {
             teams.push(bet.league);
-        } else if (sport !== 'All' &&
+        } else if ((val !== 'All' || type === 'league') &&
                    !bet.league.includes('Props') &&
                    !bet.team.includes('(') &&
                    !teams.includes(bet.team)) {
@@ -205,25 +205,7 @@ function handleLeagueChange(e) {
     });
 
     dispBets(displayBets);
-    dispTeamsFromLeague(e.target.value);
-}
-
-function dispTeamsFromLeague(league) {
-    const teams = [];
-
-    displayBets.forEach((bet) => {
-        if (league !== 'All' &&
-                   !bet.league.includes('Props') &&
-                   !bet.team.includes('(') &&
-                   !teams.includes(bet.team)) {
-            teams.push(bet.team);
-        }
-    });
-
-    teams.sort();
-    teams.forEach((team) => {
-        teamsDropdown.innerHTML += `<option value=${team.split(' ').join('')}>${team}</option>`;
-    });
+    dispTeams(e.target.value, 'league');
 }
 
 function handleTeamChange(e) {
