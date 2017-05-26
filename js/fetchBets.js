@@ -3,6 +3,7 @@ function fetchBets(tables, user) {
 
     tables.forEach((table, idx) => {
         if (idx !== 0 && idx % 2 === 0) {
+          debugger
             const slipBets = Array.from(tables[idx - 1].children[0].children);
 
             const slipBetsObj = slipBets.map((bet) => {

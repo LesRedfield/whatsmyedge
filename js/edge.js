@@ -1,12 +1,13 @@
-const bets = fetchBets(playerTables, name);
+
+// const bets = fetchBets(playerTables, 'Casey');
 
 const sports = [];
 
-bets.forEach((bet) => {
-    if (!sports.includes(bet.sport)) {
-        sports.push(bet.sport);
-    }
-});
+// bets.forEach((bet) => {
+//     if (!sports.includes(bet.sport)) {
+//         sports.push(bet.sport);
+//     }
+// });
 
 function filterBets(bets, user, sport, team, opponent) {
     if (user) {
@@ -103,16 +104,19 @@ betsListHeader.innerHTML = `
         <td>Result</td>
     </tr>
 `;
-betsListBody.appendChild(betsListHeader);
-betsList.appendChild(betsListBody);
-body.appendChild(betsList);
 
-const sportHeader = document.getElementById('sport-header');
-const leagueHeader = document.getElementById('league-header');
-const teamHeader = document.getElementById('team-header');
-sportHeader.appendChild(sportsDropdown);
-leagueHeader.appendChild(leaguesDropdown);
-teamHeader.appendChild(teamsDropdown);
+function rendDom() {
+  betsListBody.appendChild(betsListHeader);
+  betsList.appendChild(betsListBody);
+  body.appendChild(betsList);
+
+  const sportHeader = document.getElementById('sport-header');
+  const leagueHeader = document.getElementById('league-header');
+  const teamHeader = document.getElementById('team-header');
+  sportHeader.appendChild(sportsDropdown);
+  leagueHeader.appendChild(leaguesDropdown);
+  teamHeader.appendChild(teamsDropdown);
+}
 
 
 sports.forEach((sport) => {
@@ -236,6 +240,29 @@ sportsDropdown.addEventListener('change', handleSportChange);
 leaguesDropdown.addEventListener('change', handleLeagueChange);
 teamsDropdown.addEventListener('change', handleTeamChange);
 
-dispBets(displayBets);
+var openFile = function(event) {
+  var input = event.target;
 
-wagerTable(playerTables);
+  var reader = new FileReader();
+  reader.onload = function(){
+    var text = reader.result;
+    console.log(reader.result.substring(0, 200));
+    var par = document.getElementById('html-text');
+    // par.innerHTML = text;
+    render(text);
+  };
+  reader.readAsText(input.files[0]);
+};
+
+function render(text) {
+  playerTables = fetchBets(parseData(text), 'Casey');
+
+  bets = fetchBets(playerTables, 'Casey');
+
+
+  rendDom();
+
+  dispBets(displayBets);
+
+  wagerTable(playerTables);
+}
