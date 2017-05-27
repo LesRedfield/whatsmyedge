@@ -82,7 +82,8 @@ function dispBets(bets, limit) {
     });
 
     updateTotals(bets.slice(0, lim));
-    updateLimit(lim);
+
+    updateLimit(bets.length);
 }
 
 function dispLeaguesFromSport(sport) {
@@ -127,6 +128,7 @@ function dispTeams(val, type) {
 function updateLimit(limit) {
   let options = ``;
 
+
   for (i = 1; i < limit + 1; i++) {
     options += `<option value=${i}>${i}</option>`;
   }
@@ -145,7 +147,7 @@ function handleBetsChange(e) {
              (bet.team.split(' ').join('') === teamsDropdown.value || teamsDropdown.value === "All");
   });
 
-  dispBets(displayBets, e.target.value);
+  dispBets(displayBets, parseInt(e.target.value));
 }
 
 function handleSportChange(e) {
