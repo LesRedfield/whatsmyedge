@@ -5,8 +5,15 @@
     	<title>This Is The Edge</title>
         <link href="css/edge.css" rel="stylesheet">
     </head>
-    <body id="root"></body>
-    <script type="application/javascript" src="data/player.js"></script>
+    <body id="root">
+      <input type='file' accept='text/plain' onchange='openFile(event)'><br>
+      <img id='output'>
+
+      <div id='html-text'></div>
+    </body>
+    <!-- <body id="root"></body> -->
+    <script type="application/javascript" src="js/load.js"></script>
+    <!-- <script type="application/javascript" src="data/player.js"></script> -->
     <script type="application/javascript" src="js/wagerTable.js"></script>
     <script type="application/javascript" src="js/totalsList.js"></script>
     <script type="application/javascript" src="js/fetchBets.js"></script>

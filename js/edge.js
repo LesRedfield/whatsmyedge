@@ -1,12 +1,12 @@
-const bets = fetchBets(playerTables, name);
+// const bets = fetchBets(playerTables, name);
 
-const sports = [];
-
-bets.forEach((bet) => {
-    if (!sports.includes(bet.sport)) {
-        sports.push(bet.sport);
-    }
-});
+// const sports = [];
+//
+// bets.forEach((bet) => {
+//     if (!sports.includes(bet.sport)) {
+//         sports.push(bet.sport);
+//     }
+// });
 
 function filterBets(bets, user, sport, team, opponent) {
     if (user) {
@@ -32,8 +32,8 @@ function filterBets(bets, user, sport, team, opponent) {
     }
 }
 
-const totalsContainer = document.createElement('div');
-body.appendChild(totalsContainer);
+// const totalsContainer = document.createElement('div');
+// body.appendChild(totalsContainer);
 
 function updateTotals(bets) {
     totalsContainer.innerHTML = '';
@@ -75,51 +75,51 @@ function dispBets(bets) {
     updateTotals(bets);
 }
 
-const sportsDropdown = document.createElement('select');
-sportsDropdown.innerHTML = `<option value="All">All Sports</option>`;
-
-const leaguesDropdown = document.createElement('select');
-leaguesDropdown.innerHTML = `<option value="All">All Leagues</option>`;
-
-const teamsDropdown = document.createElement('select');
-teamsDropdown.innerHTML = `<option value="All">All Teams</option>`;
-
-
-const betsList = document.createElement('table');
-const betsListBody = document.createElement('tbody');
-const betsListHeader = document.createElement('tr');
-betsListHeader.innerHTML = `
-    <tr>
-        <td id="user">User</td>
-        <td id="sport-header"></td>
-        <td id="league-header"></td>
-        <td id="team-header"></td>
-        <td>Opponent</td>
-        <td>Type</td>
-        <td>Line</td>
-        <td>Odds</td>
-        <td>Risk</td>
-        <td>Reward</td>
-        <td>Result</td>
-    </tr>
-`;
-betsListBody.appendChild(betsListHeader);
-betsList.appendChild(betsListBody);
-body.appendChild(betsList);
-
-const sportHeader = document.getElementById('sport-header');
-const leagueHeader = document.getElementById('league-header');
-const teamHeader = document.getElementById('team-header');
-sportHeader.appendChild(sportsDropdown);
-leagueHeader.appendChild(leaguesDropdown);
-teamHeader.appendChild(teamsDropdown);
-
-
-sports.forEach((sport) => {
-    sportsDropdown.innerHTML += `<option value=${sport}>${sport}</option>`;
-});
-
-let displayBets = bets;
+// const sportsDropdown = document.createElement('select');
+// sportsDropdown.innerHTML = `<option value="All">All Sports</option>`;
+//
+// const leaguesDropdown = document.createElement('select');
+// leaguesDropdown.innerHTML = `<option value="All">All Leagues</option>`;
+//
+// const teamsDropdown = document.createElement('select');
+// teamsDropdown.innerHTML = `<option value="All">All Teams</option>`;
+//
+//
+// const betsList = document.createElement('table');
+// const betsListBody = document.createElement('tbody');
+// const betsListHeader = document.createElement('tr');
+// betsListHeader.innerHTML = `
+//     <tr>
+//         <td id="user">User</td>
+//         <td id="sport-header"></td>
+//         <td id="league-header"></td>
+//         <td id="team-header"></td>
+//         <td>Opponent</td>
+//         <td>Type</td>
+//         <td>Line</td>
+//         <td>Odds</td>
+//         <td>Risk</td>
+//         <td>Reward</td>
+//         <td>Result</td>
+//     </tr>
+// `;
+// betsListBody.appendChild(betsListHeader);
+// betsList.appendChild(betsListBody);
+// body.appendChild(betsList);
+//
+// const sportHeader = document.getElementById('sport-header');
+// const leagueHeader = document.getElementById('league-header');
+// const teamHeader = document.getElementById('team-header');
+// sportHeader.appendChild(sportsDropdown);
+// leagueHeader.appendChild(leaguesDropdown);
+// teamHeader.appendChild(teamsDropdown);
+//
+//
+// sports.forEach((sport) => {
+//     sportsDropdown.innerHTML += `<option value=${sport}>${sport}</option>`;
+// });
+//
+// let displayBets = bets;
 
 function dispLeaguesFromSport(sport) {
     const leagues = [];
@@ -232,10 +232,10 @@ function handleTeamChange(e) {
     dispBets(displayBets);
 }
 
-sportsDropdown.addEventListener('change', handleSportChange);
-leaguesDropdown.addEventListener('change', handleLeagueChange);
-teamsDropdown.addEventListener('change', handleTeamChange);
-
-dispBets(displayBets);
-
-wagerTable(playerTables);
+// sportsDropdown.addEventListener('change', handleSportChange);
+// leaguesDropdown.addEventListener('change', handleLeagueChange);
+// teamsDropdown.addEventListener('change', handleTeamChange);
+//
+// dispBets(displayBets);
+//
+// wagerTable(playerTables);
