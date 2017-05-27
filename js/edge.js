@@ -81,7 +81,7 @@ function dispBets(bets, limit) {
         betsListBody.appendChild(betRow);
     });
 
-    updateTotals(bets);
+    updateTotals(bets.slice(0, lim));
     updateLimit(lim);
 }
 
@@ -139,7 +139,7 @@ function handleBetsChange(e) {
   betsListBody.appendChild(betsListHeader);
 
   displayBets = bets.filter((bet) => {
-    
+
       return (bet.sport === sportsDropdown.value || sportsDropdown.value === "All") &&
              (bet.league.split(' ').join('') === leaguesDropdown.value || leaguesDropdown.value === "All") &&
              (bet.team.split(' ').join('') === teamsDropdown.value || teamsDropdown.value === "All");
