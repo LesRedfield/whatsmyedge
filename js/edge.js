@@ -60,10 +60,10 @@ function dispBets(bets, limit) {
       lim = bets.length;
     }
 
-    bets.slice(0, lim).forEach((bet) => {
+    bets.slice(0, lim).forEach((bet, idx) => {
         const betRow = document.createElement('tr');
         betRow.innerHTML = `
-            <td>${ bet.user }</td>
+            <td>${ idx + 1 }</td>
             <td>${ bet.sport }</td>
             <td>${ bet.league }</td>
             <td>${ bet.team }</td>
