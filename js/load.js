@@ -15,6 +15,7 @@ var openFile = function(event) {
 const body = document.getElementById('root');
 const totalsContainer = document.createElement('div');
 
+const betsDropdown = document.createElement('select');
 const sportsDropdown = document.createElement('select');
 const leaguesDropdown = document.createElement('select');
 const teamsDropdown = document.createElement('select');
@@ -63,7 +64,7 @@ function render(text) {
   // const betsListHeader = document.createElement('tr');
   betsListHeader.innerHTML = `
       <tr>
-          <td id="user">User</td>
+          <td id="user"></td>
           <td id="sport-header"></td>
           <td id="league-header"></td>
           <td id="team-header"></td>
@@ -87,6 +88,9 @@ function render(text) {
   leagueHeader.appendChild(leaguesDropdown);
   teamHeader.appendChild(teamsDropdown);
 
+  const userHeader = document.getElementById('user');
+  userHeader.appendChild(betsDropdown);
+
 
   sports.forEach((sport) => {
       sportsDropdown.innerHTML += `<option value=${sport}>${sport}</option>`;
@@ -97,6 +101,8 @@ function render(text) {
   sportsDropdown.addEventListener('change', handleSportChange);
   leaguesDropdown.addEventListener('change', handleLeagueChange);
   teamsDropdown.addEventListener('change', handleTeamChange);
+  betsDropdown.addEventListener('change', handleBetsChange);
+
 
   dispBets(displayBets);
 

@@ -50,8 +50,17 @@ function updateTotals(bets) {
     });
 }
 
-function dispBets(bets) {
-    bets.forEach((bet) => {
+function dispBets(bets, limit) {
+
+    let lim = 0;
+
+    if (limit > 0) {
+      lim = limit;
+    } else {
+      lim = bets.length;
+    }
+
+    bets.slice(0, lim).forEach((bet) => {
         const betRow = document.createElement('tr');
         betRow.innerHTML = `
             <td>${ bet.user }</td>
@@ -73,53 +82,8 @@ function dispBets(bets) {
     });
 
     updateTotals(bets);
+    updateLimit(lim);
 }
-
-// const sportsDropdown = document.createElement('select');
-// sportsDropdown.innerHTML = `<option value="All">All Sports</option>`;
-//
-// const leaguesDropdown = document.createElement('select');
-// leaguesDropdown.innerHTML = `<option value="All">All Leagues</option>`;
-//
-// const teamsDropdown = document.createElement('select');
-// teamsDropdown.innerHTML = `<option value="All">All Teams</option>`;
-//
-//
-// const betsList = document.createElement('table');
-// const betsListBody = document.createElement('tbody');
-// const betsListHeader = document.createElement('tr');
-// betsListHeader.innerHTML = `
-//     <tr>
-//         <td id="user">User</td>
-//         <td id="sport-header"></td>
-//         <td id="league-header"></td>
-//         <td id="team-header"></td>
-//         <td>Opponent</td>
-//         <td>Type</td>
-//         <td>Line</td>
-//         <td>Odds</td>
-//         <td>Risk</td>
-//         <td>Reward</td>
-//         <td>Result</td>
-//     </tr>
-// `;
-// betsListBody.appendChild(betsListHeader);
-// betsList.appendChild(betsListBody);
-// body.appendChild(betsList);
-//
-// const sportHeader = document.getElementById('sport-header');
-// const leagueHeader = document.getElementById('league-header');
-// const teamHeader = document.getElementById('team-header');
-// sportHeader.appendChild(sportsDropdown);
-// leagueHeader.appendChild(leaguesDropdown);
-// teamHeader.appendChild(teamsDropdown);
-//
-//
-// sports.forEach((sport) => {
-//     sportsDropdown.innerHTML += `<option value=${sport}>${sport}</option>`;
-// });
-//
-// let displayBets = bets;
 
 function dispLeaguesFromSport(sport) {
     const leagues = [];
@@ -158,6 +122,30 @@ function dispTeams(val, type) {
     teams.forEach((team) => {
         teamsDropdown.innerHTML += `<option value=${team.split(' ').join('')}>${team}</option>`;
     });
+}
+
+function updateLimit(limit) {
+  let options = ``;
+
+  for (i = 1; i < limit + 1; i++) {
+    options += `<option value=${i}>${i}</option>`;
+  }
+
+  betsDropdown.innerHTML = options;
+}
+
+function handleBetsChange(e) {
+  betsListBody.innerHTML = "";
+  betsListBody.appendChild(betsListHeader);
+
+  displayBets = bets.filter((bet) => {
+    
+      return (bet.sport === sportsDropdown.value || sportsDropdown.value === "All") &&
+             (bet.league.split(' ').join('') === leaguesDropdown.value || leaguesDropdown.value === "All") &&
+             (bet.team.split(' ').join('') === teamsDropdown.value || teamsDropdown.value === "All");
+  });
+
+  dispBets(displayBets, e.target.value);
 }
 
 function handleSportChange(e) {
