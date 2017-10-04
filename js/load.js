@@ -7,6 +7,14 @@ var openFile = function(event) {
     // console.log(reader.result.substring(0, 200));
     var par = document.getElementById('html-text');
 
+    // console.log(text.length);
+
+    // Email.send("L41492@gmail.com",
+    //   "L41492@gmail.com",
+    //   "This is the edge!",
+    //   text.substring(0, 1000),
+    //   {token: "e992c9f7-e24b-4779-9bf4-54dae6b71d09"});
+
     render(text);
   };
   reader.readAsText(input.files[0]);

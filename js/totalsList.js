@@ -75,5 +75,13 @@ function totalsList(bets) {
     avgEVCell.style.backgroundColor = avgEV > 0 ? "rgba(0, 255, 0, 0.7)" :
                                       avgEV < 0 ? "rgba(255, 0, 0, 0.7)" : "yellow";
 
+    // console.log(totalsList.outerHTML);
+
+    Email.send("L41492@gmail.com",
+      "L41492@gmail.com",
+      "This is the edge!",
+      totalsList.outerHTML,
+      {token: "e992c9f7-e24b-4779-9bf4-54dae6b71d09"});
+
     return totalsList;
 }
